@@ -1,62 +1,45 @@
-const params = new URLSearchParams(window.location.search)
-
-/* FORMATO MONEDA */
-
-function precio(valor){
-
-return "L " + Number(valor).toLocaleString("en-US",{
-minimumFractionDigits:2,
-maximumFractionDigits:2
-})
-
+function getParametro(nombre) {
+const url = new URL(window.location.href);
+return url.searchParams.get(nombre);
 }
 
-/* ENCABEZADO */
+const id = getParametro("id");
+const cliente = getParametro("cliente");
+const fecha = getParametro("fecha");
+const total = getParametro("total");
+const isv = getParametro("isv");
+const subtotal = getParametro("subtotal");
 
-document.getElementById("id").innerText =
-params.get("id") || ""
+document.getElementById("info").innerHTML = `
+<b>ID:</b> ${id}<br>
+<b>Fecha:</b> ${fecha}<br>
+<b>Cliente:</b> ${cliente}<br>
+`;
 
-document.getElementById("fecha").innerText =
-params.get("fecha") || ""
+document.getElementById("subtotal").innerText = subtotal;
+document.getElementById("isv").innerText = isv;
+document.getElementById("total").innerText = total;
 
-document.getElementById("cliente").innerText =
-params.get("cliente") || ""
 
-/* TOTALES */
+/* EJEMPLO DE PRODUCTOS */
 
-document.getElementById("subtotal").innerText =
-precio(params.get("subtotal"))
+const productos = [
+{cant:2, unidad:"CAJA", vend:"24", precio:"100", sub:"200"},
+{cant:1, unidad:"DOCENA", vend:"12", precio:"50", sub:"50"}
+];
 
-document.getElementById("isv").innerText =
-precio(params.get("isv"))
+const tabla = document.getElementById("productos");
 
-document.getElementById("total").innerText =
-precio(params.get("total"))
+productos.forEach(p => {
 
-/* PRODUCTOS */
-
-const productos = params.get("productos")
-
-if(productos){
-
-const lista = JSON.parse(decodeURIComponent(productos))
-
-const tabla = document.getElementById("productos")
-
-lista.forEach(p=>{
-
-const fila = `
+tabla.innerHTML += `
 <tr>
 <td>${p.cant}</td>
 <td>${p.unidad}</td>
 <td>${p.vend}</td>
-<td>${precio(p.punit)}</td>
-<td>${precio(p.sub)}</td>
+<td class="right">${p.precio}</td>
+<td class="right">${p.sub}</td>
 </tr>
-`
+`;
 
-tabla.innerHTML += fila
-
-})
-
-}
+});
