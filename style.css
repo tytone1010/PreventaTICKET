@@ -1,6 +1,6 @@
 body{
-font-family: Arial;
-background:#eee;
+font-family: Arial, sans-serif;
+background:#f5f5f5;
 }
 
 .ticket{
@@ -8,68 +8,58 @@ width:280px;
 margin:auto;
 background:white;
 padding:10px;
+font-size:12px;
 }
 
-h2{
+.header{
 text-align:center;
+}
+
+h1{
+font-size:16px;
 margin:0;
 }
 
-h3{
-text-align:center;
-margin:2px;
-font-size:14px;
+h2{
+font-size:13px;
+margin:3px 0 10px 0;
+border-bottom:1px solid black;
+padding-bottom:5px;
 }
 
 table{
 width:100%;
-font-size:12px;
 border-collapse:collapse;
 }
 
 th{
 border-bottom:1px dashed black;
+padding:5px 2px;
+font-size:11px;
 }
 
 td{
-padding:2px;
+padding:3px 2px;
+font-size:11px;
 }
 
-td:nth-child(1){
-text-align:center;
-}
-
-td:nth-child(2){
-text-align:center;
-}
-
-td:nth-child(3){
-text-align:center;
-}
-
-td:nth-child(4){
-text-align:right;
-}
-
-td:nth-child(5){
+.right{
 text-align:right;
 }
 
 .totales{
-font-size:13px;
-}
-
-.totales span{
-float:right;
+margin-top:10px;
+border-top:1px solid black;
 }
 
 .total{
-font-weight:bold;
 font-size:14px;
+font-weight:bold;
+border-top:2px solid black;
 }
 
 .gracias{
 text-align:center;
 margin-top:10px;
-font-size:12px;
+font-size:11px;
 }
