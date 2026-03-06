@@ -1,45 +1,39 @@
-function getParametro(nombre) {
-const url = new URL(window.location.href);
-return url.searchParams.get(nombre);
+const params = new URLSearchParams(window.location.search)
+
+function valor(nombre){
+return decodeURIComponent(params.get(nombre) || "")
 }
 
-const id = getParametro("id");
-const cliente = getParametro("cliente");
-const fecha = getParametro("fecha");
-const total = getParametro("total");
-const isv = getParametro("isv");
-const subtotal = getParametro("subtotal");
+document.getElementById("id").innerText = valor("id")
+document.getElementById("fecha").innerText = valor("fecha")
+document.getElementById("cliente").innerText = valor("cliente")
 
-document.getElementById("info").innerHTML = `
-<b>ID:</b> ${id}<br>
-<b>Fecha:</b> ${fecha}<br>
-<b>Cliente:</b> ${cliente}<br>
-`;
+document.getElementById("subtotal").innerText = valor("subtotal")
+document.getElementById("isv").innerText = valor("isv")
+document.getElementById("total").innerText = valor("total")
 
-document.getElementById("subtotal").innerText = subtotal;
-document.getElementById("isv").innerText = isv;
-document.getElementById("total").innerText = total;
+const detalleJSON = valor("detalle")
 
+if(detalleJSON){
 
-/* EJEMPLO DE PRODUCTOS */
+const productos = JSON.parse(detalleJSON)
 
-const productos = [
-{cant:2, unidad:"CAJA", vend:"24", precio:"100", sub:"200"},
-{cant:1, unidad:"DOCENA", vend:"12", precio:"50", sub:"50"}
-];
+let filas=""
 
-const tabla = document.getElementById("productos");
+productos.forEach(p=>{
 
-productos.forEach(p => {
-
-tabla.innerHTML += `
+filas += `
 <tr>
-<td>${p.cant}</td>
-<td>${p.unidad}</td>
-<td>${p.vend}</td>
-<td class="right">${p.precio}</td>
+<td class="center">${p.cant}</td>
+<td class="center">${p.unidad}</td>
+<td class="center">${p.vend}</td>
+<td class="right">${p.punit}</td>
 <td class="right">${p.sub}</td>
 </tr>
-`;
+`
 
-});
+})
+
+document.getElementById("detalle").innerHTML = filas
+
+}
