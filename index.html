@@ -7,20 +7,24 @@
 <title>Ticket Preventa</title>
 
 <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
 <div class="ticket">
 
-<div class="header">
-<h1>BODEGA EL CARACOL</h1>
-<h2>PEDIDO PREVENTA</h2>
-</div>
+<h2>BODEGA EL CARACOL</h2>
+<h3>PEDIDO PREVENTA</h3>
 
-<div id="info"></div>
+<hr>
 
-<table id="detalle">
+<p>ID: <span id="id"></span></p>
+<p>Fecha: <span id="fecha"></span></p>
+<p>Cliente: <span id="cliente"></span></p>
+
+<table>
+
 <thead>
 <tr>
 <th>Cant</th>
@@ -33,30 +37,23 @@
 
 <tbody id="productos">
 </tbody>
-</table>
-
-<table class="totales">
-
-<tr>
-<td>Subtotal</td>
-<td id="subtotal" class="right"></td>
-</tr>
-
-<tr>
-<td>ISV</td>
-<td id="isv" class="right"></td>
-</tr>
-
-<tr class="total">
-<td>TOTAL</td>
-<td id="total" class="right"></td>
-</tr>
 
 </table>
 
-<div class="gracias">
-*** Gracias por su compra ***
+<hr>
+
+<div class="totales">
+
+<p>Subtotal <span id="subtotal"></span></p>
+<p>ISV <span id="isv"></span></p>
+
+<hr>
+
+<p class="total">TOTAL <span id="total"></span></p>
+
 </div>
+
+<p class="gracias">*** Gracias por su compra ***</p>
 
 </div>
 
