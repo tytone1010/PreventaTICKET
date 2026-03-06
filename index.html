@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -14,14 +15,14 @@
 
 <div class="ticket">
 
-<h2>BODEGA EL CARACOL</h2>
-<h3>PEDIDO PREVENTA</h3>
+<h1>BODEGA EL CARACOL</h1>
+<h2>PEDIDO PREVENTA</h2>
 
-<hr>
-
-<p>ID: <span id="id"></span></p>
-<p>Fecha: <span id="fecha"></span></p>
-<p>Cliente: <span id="cliente"></span></p>
+<div class="info">
+<div><b>ID:</b> <span id="id"></span></div>
+<div><b>Fecha:</b> <span id="fecha"></span></div>
+<div><b>Cliente:</b> <span id="cliente"></span></div>
+</div>
 
 <table>
 
@@ -35,25 +36,32 @@
 </tr>
 </thead>
 
-<tbody id="productos">
-</tbody>
+<tbody id="detalle"></tbody>
 
 </table>
 
-<hr>
+<table class="totales">
 
-<div class="totales">
+<tr>
+<td>Subtotal</td>
+<td class="right">L <span id="subtotal"></span></td>
+</tr>
 
-<p>Subtotal <span id="subtotal"></span></p>
-<p>ISV <span id="isv"></span></p>
+<tr>
+<td>ISV</td>
+<td class="right">L <span id="isv"></span></td>
+</tr>
 
-<hr>
+<tr class="total">
+<td>TOTAL</td>
+<td class="right">L <span id="total"></span></td>
+</tr>
 
-<p class="total">TOTAL <span id="total"></span></p>
+</table>
 
+<div class="footer">
+*** Gracias por su compra ***
 </div>
-
-<p class="gracias">*** Gracias por su compra ***</p>
 
 </div>
 
