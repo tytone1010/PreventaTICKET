@@ -1,45 +1,62 @@
-function getParametro(nombre) {
-const url = new URL(window.location.href);
-return url.searchParams.get(nombre);
+const params = new URLSearchParams(window.location.search)
+
+/* FORMATO MONEDA */
+
+function precio(valor){
+
+return "L " + Number(valor).toLocaleString("en-US",{
+minimumFractionDigits:2,
+maximumFractionDigits:2
+})
+
 }
 
-const id = getParametro("id");
-const cliente = getParametro("cliente");
-const fecha = getParametro("fecha");
-const total = getParametro("total");
-const isv = getParametro("isv");
-const subtotal = getParametro("subtotal");
+/* ENCABEZADO */
 
-document.getElementById("info").innerHTML = `
-<b>ID:</b> ${id}<br>
-<b>Fecha:</b> ${fecha}<br>
-<b>Cliente:</b> ${cliente}<br>
-`;
+document.getElementById("id").innerText =
+params.get("id") || ""
 
-document.getElementById("subtotal").innerText = subtotal;
-document.getElementById("isv").innerText = isv;
-document.getElementById("total").innerText = total;
+document.getElementById("fecha").innerText =
+params.get("fecha") || ""
 
+document.getElementById("cliente").innerText =
+params.get("cliente") || ""
 
-/* EJEMPLO DE PRODUCTOS */
+/* TOTALES */
 
-const productos = [
-{cant:2, unidad:"CAJA", vend:"24", precio:"100", sub:"200"},
-{cant:1, unidad:"DOCENA", vend:"12", precio:"50", sub:"50"}
-];
+document.getElementById("subtotal").innerText =
+precio(params.get("subtotal"))
 
-const tabla = document.getElementById("productos");
+document.getElementById("isv").innerText =
+precio(params.get("isv"))
 
-productos.forEach(p => {
+document.getElementById("total").innerText =
+precio(params.get("total"))
 
-tabla.innerHTML += `
+/* PRODUCTOS */
+
+const productos = params.get("productos")
+
+if(productos){
+
+const lista = JSON.parse(decodeURIComponent(productos))
+
+const tabla = document.getElementById("productos")
+
+lista.forEach(p=>{
+
+const fila = `
 <tr>
 <td>${p.cant}</td>
 <td>${p.unidad}</td>
 <td>${p.vend}</td>
-<td class="right">${p.precio}</td>
-<td class="right">${p.sub}</td>
+<td>${precio(p.punit)}</td>
+<td>${precio(p.sub)}</td>
 </tr>
-`;
+`
 
-});
+tabla.innerHTML += fila
+
+})
+
+}
