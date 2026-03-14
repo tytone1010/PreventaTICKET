@@ -1,71 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Ticket Preventa</title>
-
-<link rel="stylesheet" href="style.css">
-
+<meta charset="utf-8">
+<title>Pedido</title>
+<style>
+body{font-family:Arial;margin:20px}
+</style>
 </head>
 
 <body>
 
-<div class="ticket">
+<div id="ticket"></div>
 
-<h1>BODEGA EL CARACOL</h1>
-<h2>PEDIDO PREVENTA</h2>
+<script>
 
-<div class="info">
-<div><b>ID:</b> <span id="id"></span></div>
-<div><b>Fecha:</b> <span id="fecha"></span></div>
-<div><b>Cliente:</b> <span id="cliente"></span></div>
-</div>
+const params = new URLSearchParams(window.location.search)
+const html = decodeURIComponent(params.get("html"))
 
-<table>
+document.getElementById("ticket").innerHTML = html
 
-<thead>
-<tr>
-<th>Cant</th>
-<th>Unidad</th>
-<th>Vend</th>
-<th>PUnit</th>
-<th>Sub</th>
-</tr>
-</thead>
-
-<tbody id="detalle"></tbody>
-
-</table>
-
-<table class="totales">
-
-<tr>
-<td>Subtotal</td>
-<td class="right">L <span id="subtotal"></span></td>
-</tr>
-
-<tr>
-<td>ISV</td>
-<td class="right">L <span id="isv"></span></td>
-</tr>
-
-<tr class="total">
-<td>TOTAL</td>
-<td class="right">L <span id="total"></span></td>
-</tr>
-
-</table>
-
-<div class="footer">
-*** Gracias por su compra ***
-</div>
-
-</div>
-
-<script src="script.js"></script>
+</script>
 
 </body>
 </html>
